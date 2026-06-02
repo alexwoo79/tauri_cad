@@ -1,0 +1,47 @@
+﻿using System.Collections.Generic;
+
+namespace SunlightPlugin
+{
+    public static class CityDatabase
+    {
+        public static Dictionary<string, List<CityData>> GetLocationDB()
+        {
+            return new Dictionary<string, List<CityData>>
+            {
+                { "北京", new List<CityData> { new CityData { Name="北京", Lon=116.40, Lat=39.90 } }},
+                { "上海", new List<CityData> { new CityData { Name="上海", Lon=121.47, Lat=31.23 } }},
+                { "天津", new List<CityData> { new CityData { Name="天津", Lon=117.20, Lat=39.13 } }},
+                { "重庆", new List<CityData> { new CityData { Name="重庆", Lon=106.55, Lat=29.53 }, new CityData { Name="万州", Lon=108.40, Lat=30.80 } }},
+                { "广东", new List<CityData> { new CityData { Name="广州", Lon=113.23, Lat=23.16 }, new CityData { Name="深圳", Lon=114.07, Lat=22.62 }, new CityData { Name="东莞", Lon=113.75, Lat=23.04 }, new CityData { Name="佛山", Lon=113.11, Lat=23.05 }, new CityData { Name="珠海", Lon=113.52, Lat=20.30 } }},
+                { "江苏", new List<CityData> { new CityData { Name="南京", Lon=118.78, Lat=32.04 }, new CityData { Name="苏州", Lon=120.62, Lat=31.32 }, new CityData { Name="无锡", Lon=120.29, Lat=31.59 }, new CityData { Name="常州", Lon=119.95, Lat=31.79 }, new CityData { Name="南通", Lon=120.86, Lat=32.01 } }},
+                { "浙江", new List<CityData> { new CityData { Name="杭州", Lon=120.19, Lat=30.26 }, new CityData { Name="宁波", Lon=121.56, Lat=29.86 }, new CityData { Name="温州", Lon=120.65, Lat=28.01 }, new CityData { Name="绍兴", Lon=120.58, Lat=30.01 }, new CityData { Name="嘉兴", Lon=120.76, Lat=30.77 } }},
+                { "山东", new List<CityData> { new CityData { Name="济南", Lon=117.00, Lat=36.65 }, new CityData { Name="青岛", Lon=120.33, Lat=36.07 }, new CityData { Name="烟台", Lon=121.39, Lat=37.52 }, new CityData { Name="潍坊", Lon=119.10, Lat=36.62 }, new CityData { Name="临沂", Lon=118.35, Lat=35.05 } }},
+                { "四川", new List<CityData> { new CityData { Name="成都", Lon=104.06, Lat=30.67 }, new CityData { Name="绵阳", Lon=104.73, Lat=31.48 }, new CityData { Name="南充", Lon=106.08, Lat=30.79 }, new CityData { Name="宜宾", Lon=104.62, Lat=28.77 }, new CityData { Name="泸州", Lon=105.44, Lat=28.89 } }},
+                { "湖北", new List<CityData> { new CityData { Name="武汉", Lon=114.31, Lat=30.52 }, new CityData { Name="襄阳", Lon=112.14, Lat=32.04 }, new CityData { Name="宜昌", Lon=111.28, Lat=30.69 }, new CityData { Name="荆州", Lon=112.23, Lat=30.33 }, new CityData { Name="黄石", Lon=115.09, Lat=30.20 } }},
+                { "湖南", new List<CityData> { new CityData { Name="长沙", Lon=112.93, Lat=28.23 }, new CityData { Name="株洲", Lon=113.15, Lat=27.83 }, new CityData { Name="湘潭", Lon=112.91, Lat=27.87 }, new CityData { Name="衡阳", Lon=112.61, Lat=26.89 }, new CityData { Name="岳阳", Lon=113.11, Lat=29.37 } }},
+                { "河南", new List<CityData> { new CityData { Name="郑州", Lon=113.62, Lat=34.75 }, new CityData { Name="洛阳", Lon=112.44, Lat=34.70 }, new CityData { Name="南阳", Lon=112.53, Lat=32.99 }, new CityData { Name="许昌", Lon=113.81, Lat=34.02 }, new CityData { Name="周口", Lon=114.63, Lat=33.63 } }},
+                { "福建", new List<CityData> { new CityData { Name="福州", Lon=119.30, Lat=26.08 }, new CityData { Name="厦门", Lon=118.08, Lat=24.48 }, new CityData { Name="泉州", Lon=118.58, Lat=24.93 }, new CityData { Name="漳州", Lon=117.65, Lat=24.51 }, new CityData { Name="莆田", Lon=119.00, Lat=25.43 } }},
+                { "安徽", new List<CityData> { new CityData { Name="合肥", Lon=117.27, Lat=31.86 }, new CityData { Name="芜湖", Lon=118.38, Lat=31.33 }, new CityData { Name="蚌埠", Lon=117.36, Lat=32.92 }, new CityData { Name="阜阳", Lon=115.81, Lat=32.89 }, new CityData { Name="安庆", Lon=117.06, Lat=30.53 } }},
+                { "河北", new List<CityData> { new CityData { Name="石家庄", Lon=114.48, Lat=38.03 }, new CityData { Name="唐山", Lon=118.20, Lat=39.63 }, new CityData { Name="保定", Lon=115.48, Lat=38.85 }, new CityData { Name="邯郸", Lon=114.47, Lat=36.60 }, new CityData { Name="沧州", Lon=116.83, Lat=38.31 } }},
+                { "陕西", new List<CityData> { new CityData { Name="西安", Lon=108.95, Lat=34.27 }, new CityData { Name="宝鸡", Lon=107.15, Lat=34.36 }, new CityData { Name="咸阳", Lon=108.72, Lat=34.36 }, new CityData { Name="渭南", Lon=109.50, Lat=34.52 }, new CityData { Name="榆林", Lon=109.74, Lat=38.29 } }},
+                { "江西", new List<CityData> { new CityData { Name="南昌", Lon=115.89, Lat=28.68 }, new CityData { Name="赣州", Lon=114.92, Lat=25.85 }, new CityData { Name="九江", Lon=115.99, Lat=29.71 }, new CityData { Name="宜春", Lon=114.39, Lat=27.79 }, new CityData { Name="上饶", Lon=117.97, Lat=28.45 } }},
+                { "辽宁", new List<CityData> { new CityData { Name="沈阳", Lon=123.43, Lat=41.80 }, new CityData { Name="大连", Lon=121.62, Lat=38.92 }, new CityData { Name="鞍山", Lon=122.99, Lat=41.11 }, new CityData { Name="抚顺", Lon=123.97, Lat=41.87 }, new CityData { Name="本溪", Lon=123.73, Lat=41.30 } }},
+                { "黑龙江", new List<CityData> { new CityData { Name="哈尔滨", Lon=126.63, Lat=45.75 }, new CityData { Name="大庆", Lon=125.03, Lat=46.58 }, new CityData { Name="齐齐哈尔", Lon=123.97, Lat=47.33 }, new CityData { Name="牡丹江", Lon=129.62, Lat=44.55 }, new CityData { Name="佳木斯", Lon=130.32, Lat=46.80 } }},
+                { "吉林", new List<CityData> { new CityData { Name="长春", Lon=125.35, Lat=43.88 }, new CityData { Name="吉林", Lon=126.55, Lat=43.83 }, new CityData { Name="四平", Lon=124.37, Lat=43.17 }, new CityData { Name="松原", Lon=124.82, Lat=45.13 }, new CityData { Name="通化", Lon=125.92, Lat=41.73 } }},
+                { "广西", new List<CityData> { new CityData { Name="南宁", Lon=108.33, Lat=22.82 }, new CityData { Name="柳州", Lon=109.41, Lat=24.31 }, new CityData { Name="桂林", Lon=110.28, Lat=25.27 }, new CityData { Name="玉林", Lon=110.15, Lat=22.63 }, new CityData { Name="百色", Lon=106.61, Lat=23.89 } }},
+                { "云南", new List<CityData> { new CityData { Name="昆明", Lon=102.73, Lat=25.04 }, new CityData { Name="曲靖", Lon=103.79, Lat=25.51 }, new CityData { Name="玉溪", Lon=102.54, Lat=24.35 }, new CityData { Name="大理", Lon=100.22, Lat=25.59 }, new CityData { Name="丽江", Lon=100.23, Lat=26.86 } }},
+                { "贵州", new List<CityData> { new CityData { Name="贵阳", Lon=106.71, Lat=26.57 }, new CityData { Name="遵义", Lon=106.90, Lat=27.70 }, new CityData { Name="六盘水", Lon=104.82, Lat=26.58 }, new CityData { Name="安顺", Lon=105.93, Lat=26.25 }, new CityData { Name="毕节", Lon=105.28, Lat=27.30 } }},
+                { "山西", new List<CityData> { new CityData { Name="太原", Lon=112.53, Lat=37.87 }, new CityData { Name="大同", Lon=113.30, Lat=40.07 }, new CityData { Name="长治", Lon=113.11, Lat=36.19 }, new CityData { Name="晋城", Lon=112.85, Lat=35.48 }, new CityData { Name="临汾", Lon=111.52, Lat=36.08 } }},
+                { "内蒙古", new List<CityData> { new CityData { Name="呼和浩特", Lon=111.65, Lat=40.82 }, new CityData { Name="包头", Lon=109.84, Lat=40.66 }, new CityData { Name="鄂尔多斯", Lon=109.99, Lat=39.81 }, new CityData { Name="赤峰", Lon=118.92, Lat=42.27 }, new CityData { Name="通辽", Lon=122.25, Lat=43.61 } }},
+                { "新疆", new List<CityData> { new CityData { Name="乌鲁木齐", Lon=87.68, Lat=43.77 }, new CityData { Name="克拉玛依", Lon=84.87, Lat=45.59 }, new CityData { Name="喀什", Lon=75.98, Lat=39.46 }, new CityData { Name="伊宁", Lon=81.33, Lat=43.92 }, new CityData { Name="库尔勒", Lon=86.15, Lat=41.76 } }},
+                { "甘肃", new List<CityData> { new CityData { Name="兰州", Lon=103.82, Lat=36.06 }, new CityData { Name="天水", Lon=105.72, Lat=34.58 }, new CityData { Name="酒泉", Lon=98.51, Lat=39.74 }, new CityData { Name="张掖", Lon=100.45, Lat=38.93 }, new CityData { Name="庆阳", Lon=107.63, Lat=35.73 } }},
+                { "海南", new List<CityData> { new CityData { Name="海口", Lon=110.35, Lat=20.02 }, new CityData { Name="三亚", Lon=109.51, Lat=18.25 }, new CityData { Name="三沙", Lon=112.33, Lat=16.83 }, new CityData { Name="儋州", Lon=109.57, Lat=19.52 }, new CityData { Name="琼海", Lon=110.46, Lat=19.24 } }},
+                { "宁夏", new List<CityData> { new CityData { Name="银川", Lon=106.27, Lat=38.47 }, new CityData { Name="石嘴山", Lon=106.39, Lat=39.04 }, new CityData { Name="吴忠", Lon=106.16, Lat=37.98 }, new CityData { Name="固原", Lon=106.28, Lat=36.01 }, new CityData { Name="中卫", Lon=105.18, Lat=37.51 } }},
+                { "青海", new List<CityData> { new CityData { Name="西宁", Lon=101.74, Lat=36.56 }, new CityData { Name="海东", Lon=102.10, Lat=36.50 }, new CityData { Name="格尔木", Lon=94.90, Lat=36.40 }, new CityData { Name="玉树", Lon=97.00, Lat=33.00 }, new CityData { Name="德令哈", Lon=97.37, Lat=37.37 } }},
+                { "西藏", new List<CityData> { new CityData { Name="拉萨", Lon=91.11, Lat=29.65 }, new CityData { Name="日喀则", Lon=88.88, Lat=29.26 }, new CityData { Name="昌都", Lon=97.17, Lat=31.14 }, new CityData { Name="林芝", Lon=94.36, Lat=29.65 }, new CityData { Name="那曲", Lon=92.06, Lat=31.47 } }},
+                { "港澳台", new List<CityData> { new CityData { Name="香港", Lon=114.17, Lat=22.28 }, new CityData { Name="澳门", Lon=113.54, Lat=22.19 }, new CityData { Name="台北", Lon=121.50, Lat=25.03 }, new CityData { Name="高雄", Lon=120.31, Lat=22.62 } }},
+                { "自定义", new List<CityData> { new CityData { Name="手动输入", Lon=120.00, Lat=30.00 } }}
+            };
+        }
+    }
+}

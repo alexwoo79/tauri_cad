@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Costura.Fody.6.2.0\build\Costura.Fody.props" Condition="Exists('packages\Costura.Fody.6.2.0\build\Costura.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD29086B-9E38-42B7-8B5B-19233986FCE5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SunlightPlugin</RootNamespace>
+    <AssemblyName>SunlightPlugin</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and '$(ACAD_MANAGED_DIR)' != ''">$(ACAD_MANAGED_DIR)</AutoCADManagedDir>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and '$(ACAD_EXE_PATH)' != ''">$(ACAD_EXE_PATH)</AutoCADExePath>
+
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2026\acmgd.dll')">$(ProgramFiles)\Autodesk\AutoCAD 2026</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2025\acmgd.dll')">$(ProgramFiles)\Autodesk\AutoCAD 2025</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2024\acmgd.dll')">$(ProgramFiles)\Autodesk\AutoCAD 2024</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2023\acmgd.dll')">$(ProgramFiles)\Autodesk\AutoCAD 2023</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2022\acmgd.dll')">$(ProgramFiles)\Autodesk\AutoCAD 2022</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2021\acmgd.dll')">$(ProgramFiles)\Autodesk\AutoCAD 2021</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2020\acmgd.dll')">$(ProgramFiles)\Autodesk\AutoCAD 2020</AutoCADManagedDir>
+
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2026\acmgd.dll')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2026</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2025\acmgd.dll')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2025</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024\acmgd.dll')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2023\acmgd.dll')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2023</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2022\acmgd.dll')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2022</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2021\acmgd.dll')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2021</AutoCADManagedDir>
+    <AutoCADManagedDir Condition="'$(AutoCADManagedDir)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2020\acmgd.dll')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2020</AutoCADManagedDir>
+
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2026\acad.exe')">$(ProgramFiles)\Autodesk\AutoCAD 2026\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2025\acad.exe')">$(ProgramFiles)\Autodesk\AutoCAD 2025\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2024\acad.exe')">$(ProgramFiles)\Autodesk\AutoCAD 2024\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2023\acad.exe')">$(ProgramFiles)\Autodesk\AutoCAD 2023\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2022\acad.exe')">$(ProgramFiles)\Autodesk\AutoCAD 2022\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2021\acad.exe')">$(ProgramFiles)\Autodesk\AutoCAD 2021\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('$(ProgramFiles)\Autodesk\AutoCAD 2020\acad.exe')">$(ProgramFiles)\Autodesk\AutoCAD 2020\acad.exe</AutoCADExePath>
+
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2026\acad.exe')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2026\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2025\acad.exe')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2025\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024\acad.exe')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2024\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2023\acad.exe')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2023\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2022\acad.exe')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2022\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2021\acad.exe')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2021\acad.exe</AutoCADExePath>
+    <AutoCADExePath Condition="'$(AutoCADExePath)' == '' and Exists('..\..\..\..\..\Program Files\Autodesk\AutoCAD 2020\acad.exe')">..\..\..\..\..\Program Files\Autodesk\AutoCAD 2020\acad.exe</AutoCADExePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="accoremgd">
+      <HintPath>$(AutoCADManagedDir)\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd">
+      <HintPath>$(AutoCADManagedDir)\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd">
+      <HintPath>$(AutoCADManagedDir)\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Costura, Version=6.2.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>packages\Costura.Fody.6.2.0\lib\netstandard2.0\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="ILGPU, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ILGPU.1.5.3\lib\net471\ILGPU.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Immutable.7.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=7.0.0.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.Metadata.7.0.2\lib\net462\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="1_Models\CityDatabase.cs" />
+    <Compile Include="1_Models\DataModels.cs" />
+    <Compile Include="MainApp.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="3_UI\SunControlUI.xaml.cs">
+      <DependentUpon>SunControlUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="2_Engine\SunEngine.cs" />
+    <Compile Include="2_Engine\SunlightCalculatorGPU.cs" />
+    <Compile Include="4_Jig\SunlightJig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="3_UI\SunControlUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\Fody.6.9.3\build\Fody.targets" Condition="Exists('packages\Fody.6.9.3\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Fody.6.9.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Fody.6.9.3\build\Fody.targets'))" />
+    <Error Condition="!Exists('packages\Costura.Fody.6.2.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Costura.Fody.6.2.0\build\Costura.Fody.props'))" />
+    <Error Condition="!Exists('packages\Costura.Fody.6.2.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Costura.Fody.6.2.0\build\Costura.Fody.targets'))" />
+  </Target>
+  <Target Name="EnsureAutoCADManagedReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(AutoCADManagedDir)' == ''" Text="未找到 AutoCAD 托管程序集目录。请安装 AutoCAD 2020-2026，或在构建时传入 /p:AutoCADManagedDir=你的路径，或设置环境变量 ACAD_MANAGED_DIR。" />
+    <Error Condition="!Exists('$(AutoCADManagedDir)\acmgd.dll')" Text="缺少 $(AutoCADManagedDir)\acmgd.dll" />
+    <Error Condition="!Exists('$(AutoCADManagedDir)\acdbmgd.dll')" Text="缺少 $(AutoCADManagedDir)\acdbmgd.dll" />
+    <Error Condition="!Exists('$(AutoCADManagedDir)\accoremgd.dll')" Text="缺少 $(AutoCADManagedDir)\accoremgd.dll" />
+  </Target>
+  <Import Project="packages\Costura.Fody.6.2.0\build\Costura.Fody.targets" Condition="Exists('packages\Costura.Fody.6.2.0\build\Costura.Fody.targets')" />
+</Project>

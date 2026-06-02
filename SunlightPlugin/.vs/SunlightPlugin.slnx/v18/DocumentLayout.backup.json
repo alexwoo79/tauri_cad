@@ -1,0 +1,183 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\3_ui\\suncontrolui.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|solutionrelative:3_ui\\suncontrolui.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\mainapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|solutionrelative:mainapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\2_engine\\sunlightcalculatorgpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|solutionrelative:2_engine\\sunlightcalculatorgpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\4_jig\\sunlightjig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|solutionrelative:4_jig\\sunlightjig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|d:\\users\\zhengyouchi\\source\\repos\\sunlightplugin\\2_engine\\sunengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|solutionrelative:2_engine\\sunengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\1_models\\datamodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|solutionrelative:1_models\\datamodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\1_models\\citydatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|solutionrelative:1_models\\citydatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|solutionrelative:packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\3_ui\\suncontrolui.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DD29086B-9E38-42B7-8B5B-19233986FCE5}|SunlightPlugin.csproj|solutionrelative:3_ui\\suncontrolui.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|SunlightPlugin||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\packages.config",
+              "RelativeDocumentMoniker": "packages.config",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\packages.config",
+              "RelativeToolTip": "packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-06-01T08:44:30.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DataModels.cs",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\1_Models\\DataModels.cs",
+              "RelativeDocumentMoniker": "1_Models\\DataModels.cs",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\1_Models\\DataModels.cs",
+              "RelativeToolTip": "1_Models\\DataModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-01T08:25:05.715Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CityDatabase.cs",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\1_Models\\CityDatabase.cs",
+              "RelativeDocumentMoniker": "1_Models\\CityDatabase.cs",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\1_Models\\CityDatabase.cs",
+              "RelativeToolTip": "1_Models\\CityDatabase.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAAAC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-01T05:47:21.85Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SunlightCalculatorGPU.cs",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\2_Engine\\SunlightCalculatorGPU.cs",
+              "RelativeDocumentMoniker": "2_Engine\\SunlightCalculatorGPU.cs",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\2_Engine\\SunlightCalculatorGPU.cs",
+              "RelativeToolTip": "2_Engine\\SunlightCalculatorGPU.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAkwIoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T02:47:30.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SunlightJig.cs",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\4_Jig\\SunlightJig.cs",
+              "RelativeDocumentMoniker": "4_Jig\\SunlightJig.cs",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\4_Jig\\SunlightJig.cs",
+              "RelativeToolTip": "4_Jig\\SunlightJig.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAApwFsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T06:36:21.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SunControlUI.xaml.cs",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\3_UI\\SunControlUI.xaml.cs",
+              "RelativeDocumentMoniker": "3_UI\\SunControlUI.xaml.cs",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\3_UI\\SunControlUI.xaml.cs*",
+              "RelativeToolTip": "3_UI\\SunControlUI.xaml.cs*",
+              "ViewState": "AgIAAKgCAAAAAAAAAAAiwMwCAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T09:36:07.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SunControlUI.xaml",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\3_UI\\SunControlUI.xaml",
+              "RelativeDocumentMoniker": "3_UI\\SunControlUI.xaml",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\3_UI\\SunControlUI.xaml",
+              "RelativeToolTip": "3_UI\\SunControlUI.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-27T09:30:37.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SunEngine.cs",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\2_Engine\\SunEngine.cs",
+              "RelativeDocumentMoniker": "2_Engine\\SunEngine.cs",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\2_Engine\\SunEngine.cs",
+              "RelativeToolTip": "2_Engine\\SunEngine.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAiwCcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T02:42:04.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SunlightPlugin",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\SunlightPlugin.csproj",
+              "RelativeDocumentMoniker": "SunlightPlugin.csproj",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\SunlightPlugin.csproj",
+              "RelativeToolTip": "SunlightPlugin.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-05-28T03:00:09.992Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainApp.cs",
+              "DocumentMoniker": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\MainApp.cs",
+              "RelativeDocumentMoniker": "MainApp.cs",
+              "ToolTip": "D:\\Users\\zhengyouchi\\source\\repos\\SunlightPlugin\\MainApp.cs",
+              "RelativeToolTip": "MainApp.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T09:38:46.972Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

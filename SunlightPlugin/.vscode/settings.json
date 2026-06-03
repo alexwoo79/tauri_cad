@@ -3,5 +3,8 @@
     "[autolisp]": {
         "editor.wordSeparators": "`|;'\",()"
     },
-    "dotnet.preferCSharpExtension": true
+    "dotnet.preferCSharpExtension": true,
+    "[lisp]": {
+        "editor.wordSeparators": "`|;'\",()"
+    }
 }

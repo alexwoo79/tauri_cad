@@ -34,6 +34,11 @@ namespace SunlightPlugin
         private int _timeStep, _totalRaysCount;
         private double _influenceRadius;
         private double _bldgsMinX, _bldgsMaxX, _bldgsMinY, _bldgsMaxY;
+        private Vector3d _lastGhostOffset = new Vector3d(0.0, 0.0, 0.0);
+
+        private readonly Dictionary<short, List<GridNode>> _colorGroups = new Dictionary<short, List<GridNode>>();
+        private readonly Dictionary<short, Point3dCollection> _groupPoints = new Dictionary<short, Point3dCollection>();
+        private readonly Dictionary<short, IntegerCollection> _groupFaces = new Dictionary<short, IntegerCollection>();
 
         private static readonly short[] _meshColors = new short[] { 1, 2, 3, 4, 5, 6, 8, 250 };
 
@@ -111,6 +116,13 @@ namespace SunlightPlugin
             _origMaxX = _bldgsMaxX + _influenceRadius;
             _origMinY = _bldgsMinY - _influenceRadius;
             _origMaxY = _bldgsMaxY + _influenceRadius;
+
+            foreach (short c in _meshColors)
+            {
+                _colorGroups[c] = new List<GridNode>();
+                _groupPoints[c] = new Point3dCollection();
+                _groupFaces[c] = new IntegerCollection();
+            }
         }
 
         public Point3d CurrentPoint => _currentPt;
@@ -128,13 +140,21 @@ namespace SunlightPlugin
         {
             Vector3d offset = _currentPt - _basePt;
 
-            // 1. 同时绘制多个拖拽中的幽灵模型
+            // 1. 仅做增量变换，避免每帧克隆实体
+            Vector3d ghostDelta = offset - _lastGhostOffset;
+            if (ghostDelta.Length > 1e-9)
+            {
+                Matrix3d ghostDeltaMat = Matrix3d.Displacement(ghostDelta);
+                foreach (var ent in _movingEnts)
+                {
+                    ent.TransformBy(ghostDeltaMat);
+                }
+                _lastGhostOffset = offset;
+            }
+
             foreach (var ent in _movingEnts)
             {
-                Entity ghostEnt = ent.Clone() as Entity;
-                ghostEnt.TransformBy(Matrix3d.Displacement(offset));
-                draw.Geometry.Draw(ghostEnt);
-                ghostEnt.Dispose();
+                draw.Geometry.Draw(ent);
             }
 
             // 2. 实时包围盒：当前鼠标所在位置的影响范围
@@ -176,8 +196,10 @@ namespace SunlightPlugin
             byte[] movingMask = _gpuEngine.ComputeJigFrame(_movingBldgsFrame);
             if (movingMask.Length == 0) return true;
 
-            var colorGroups = new Dictionary<short, List<GridNode>>();
-            foreach (short c in _meshColors) colorGroups[c] = new List<GridNode>();
+            foreach (short c in _meshColors)
+            {
+                _colorGroups[c].Clear();
+            }
 
             // 4. 【全图渲染 + 局部算力剔除】：保持全图可见，但只算影响范围内的网格
             foreach (var node in _baseGridCache)
@@ -219,22 +241,27 @@ namespace SunlightPlugin
                 }
 
                 short color = SunControlUI.GetColorIndex(rayCount * _timeStep);
-                colorGroups[color].Add(node);
+                _colorGroups[color].Add(node);
             }
 
             // 5. 将整个全图的网格一起送入显卡渲染队列
-            foreach (var kvp in colorGroups)
+            foreach (short color in _meshColors)
             {
-                if (kvp.Value.Count == 0) continue;
-                Point3dCollection pts = new Point3dCollection();
-                IntegerCollection faces = new IntegerCollection();
-                foreach (var node in kvp.Value)
+                var nodes = _colorGroups[color];
+                if (nodes.Count == 0) continue;
+
+                Point3dCollection pts = _groupPoints[color];
+                IntegerCollection faces = _groupFaces[color];
+                pts.Clear();
+                faces.Clear();
+
+                foreach (var node in nodes)
                 {
                     int vBase = pts.Count;
                     pts.Add(node.Corners[0]); pts.Add(node.Corners[1]); pts.Add(node.Corners[2]); pts.Add(node.Corners[3]);
                     faces.Add(4); faces.Add(vBase); faces.Add(vBase + 1); faces.Add(vBase + 2); faces.Add(vBase + 3);
                 }
-                draw.SubEntityTraits.Color = kvp.Key; draw.SubEntityTraits.FillType = FillType.FillAlways;
+                draw.SubEntityTraits.Color = color; draw.SubEntityTraits.FillType = FillType.FillAlways;
                 draw.Geometry.Shell(pts, faces, null, null, null, false);
             }
             return true;

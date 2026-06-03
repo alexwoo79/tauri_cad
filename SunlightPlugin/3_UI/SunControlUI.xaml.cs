@@ -78,6 +78,79 @@ namespace SunlightPlugin
             return double.TryParse(text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out value);
         }
 
+        private static bool IsRealisticStyleName(string styleName)
+        {
+            if (string.IsNullOrWhiteSpace(styleName)) return false;
+            return string.Equals(styleName, "Realistic", StringComparison.OrdinalIgnoreCase)
+                || string.Equals(styleName, "真实", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static bool TryInvokeVisualStyleCommand(Editor editor, string styleName)
+        {
+            if (editor == null || string.IsNullOrWhiteSpace(styleName)) return false;
+
+            // 优先尝试系统变量直设，避免部分版本缺失 Editor.Command API。
+            try
+            {
+                Application.SetSystemVariable("VSCURRENT", styleName);
+                return true;
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                var commandMethod = typeof(Editor).GetMethod("Command", new Type[] { typeof(object[]) });
+                if (commandMethod != null)
+                {
+                    object[] args = new object[] { "._SHADEMODE", "_Realistic" };
+                    commandMethod.Invoke(editor, new object[] { args });
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+
+            // 同步 COM 兜底：在进入 Jig 前直接执行完整命令，避免异步注入到取点流。
+            try
+            {
+                dynamic acadApp = Application.AcadApplication;
+                if (acadApp == null) return false;
+                dynamic acadDoc = acadApp.ActiveDocument;
+                if (acadDoc == null) return false;
+
+                // 真实样式命令（完整参数，避免交互停顿）
+                acadDoc.SendCommand("._SHADEMODE _R ");
+                return true;
+            }
+            catch
+            {
+            }
+
+            return false;
+        }
+
+        private static bool TrySwitchToRealistic(Editor editor, out string diagnostics)
+        {
+            var trace = new List<string>();
+            string[] candidates = new string[] { "Realistic", "真实" };
+            foreach (string candidate in candidates)
+            {
+                bool invoked = TryInvokeVisualStyleCommand(editor, candidate);
+                trace.Add("cmd(" + candidate + ") invoked=" + invoked);
+                if (invoked)
+                {
+                    diagnostics = string.Join(" | ", trace);
+                    return true;
+                }
+            }
+
+            diagnostics = string.Join(" | ", trace);
+            return false;
+        }
+
         private bool TryReadUiCalcParams(bool needSpacing, out UiCalcParams parameters, out string error)
         {
             parameters = default(UiCalcParams);
@@ -741,7 +814,25 @@ namespace SunlightPlugin
                                     }
 
                                     SunlightJig jig = new SunlightJig(movingEnts, ppr.Value, state.BaseGridCache, uiParams.TimeStep, state.TotalRaysGlobal, state.GpuEngine, bldgDataList);
-                                    PromptResult res = ed.Drag(jig);
+                                    string switchDiag;
+                                    bool visualStyleChanged = TrySwitchToRealistic(ed, out switchDiag);
+                                    ed.WriteMessage($"\n[VS] hook reached changed={visualStyleChanged} diag={switchDiag}");
+                                    ed.WriteMessage($"\n[VS] enter-drag changed={visualStyleChanged} diag={switchDiag}");
+                                    if (!visualStyleChanged)
+                                    {
+                                        ed.WriteMessage("\n[WARN] 未能执行真实样式切换命令。");
+                                    }
+
+                                    PromptResult res;
+                                    try
+                                    {
+                                        res = ed.Drag(jig);
+                                    }
+                                    finally
+                                    {
+                                        // 当前环境下 VSCURRENT 的系统变量读写会抛 eInvalidInput，拖拽阶段不做自动恢复。
+                                    }
+
                                     if (res.Status == PromptStatus.OK)
                                     {
                                         Matrix3d disp = Matrix3d.Displacement(jig.CurrentPoint - ppr.Value);

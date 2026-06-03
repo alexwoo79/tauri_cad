@@ -1,5 +1,5 @@
 (setvar "FILEDIA" 0)
-(command "_.NETLOAD" "D:/Users/zhengyouchi/source/repos/SunlightPlugin/bin/Debug/SunlightPlugin.dll")
+(command "_.NETLOAD" "D:/github/tauri_cad/SunlightPlugin/bin/Debug/SunlightPlugin.dll")
 (setvar "FILEDIA" 1)
-(princ "\n[系统提示] 日照插件已强行挂载！请输入 START_SUN 唤醒面板。")
+(princ "\n[SUN] Plugin loaded. Type SUN to open panel.")
 (princ)

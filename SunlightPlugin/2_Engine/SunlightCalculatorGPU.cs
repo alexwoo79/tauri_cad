@@ -26,6 +26,10 @@ namespace SunlightPlugin
         private MemoryBuffer1D<Float3, Stride1D.Dense> _jigPts;
         private MemoryBuffer1D<Float3, Stride1D.Dense> _jigRays;
         private MemoryBuffer1D<byte, Stride1D.Dense> _jigOutMask;
+        private MemoryBuffer1D<GPUBuilding, Stride1D.Dense> _jigBldgs;
+        private MemoryBuffer1D<Float2, Stride1D.Dense> _jigVerts;
+        private int _jigBldgsCapacity;
+        private int _jigVertsCapacity;
 
         public SunlightCalculatorGPU()
         {
@@ -129,12 +133,37 @@ namespace SunlightPlugin
 
             if (vertsGPU.Count == 0) vertsGPU.Add(new Float2 { X = 0, Y = 0 });
 
-            using (var devBldgs = _accelerator.Allocate1D(bldgsGPU))
-            using (var devVerts = _accelerator.Allocate1D(vertsGPU.ToArray()))
+            EnsureJigFrameBuffers(bldgsGPU.Length, vertsGPU.Count);
+            _jigBldgs.View.SubView(0, bldgsGPU.Length).CopyFromCPU(bldgsGPU);
+            var vertsArray = vertsGPU.ToArray();
+            _jigVerts.View.SubView(0, vertsArray.Length).CopyFromCPU(vertsArray);
+
+            _rayCastKernel(
+                (int)_jigPts.Length,
+                _jigPts.View,
+                _jigRays.View,
+                _jigBldgs.View.SubView(0, bldgsGPU.Length),
+                _jigVerts.View.SubView(0, vertsArray.Length),
+                _jigOutMask.View);
+
+            _accelerator.Synchronize();
+            return _jigOutMask.GetAsArray1D();
+        }
+
+        private void EnsureJigFrameBuffers(int bldgsCount, int vertsCount)
+        {
+            if (_jigBldgs == null || _jigBldgsCapacity < bldgsCount)
             {
-                _rayCastKernel((int)_jigPts.Length, _jigPts.View, _jigRays.View, devBldgs.View, devVerts.View, _jigOutMask.View);
-                _accelerator.Synchronize();
-                return _jigOutMask.GetAsArray1D();
+                _jigBldgs?.Dispose();
+                _jigBldgs = _accelerator.Allocate1D<GPUBuilding>(bldgsCount);
+                _jigBldgsCapacity = bldgsCount;
+            }
+
+            if (_jigVerts == null || _jigVertsCapacity < vertsCount)
+            {
+                _jigVerts?.Dispose();
+                _jigVerts = _accelerator.Allocate1D<Float2>(vertsCount);
+                _jigVertsCapacity = vertsCount;
             }
         }
 
@@ -143,6 +172,10 @@ namespace SunlightPlugin
             _jigPts?.Dispose(); _jigPts = null;
             _jigRays?.Dispose(); _jigRays = null;
             _jigOutMask?.Dispose(); _jigOutMask = null;
+            _jigBldgs?.Dispose(); _jigBldgs = null;
+            _jigVerts?.Dispose(); _jigVerts = null;
+            _jigBldgsCapacity = 0;
+            _jigVertsCapacity = 0;
         }
 
         // ILGPU 核函数：光线与包围盒及多边形的严格相交算法

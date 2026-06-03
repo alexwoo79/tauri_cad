@@ -1,0 +1,5 @@
+(setvar "FILEDIA" 0)
+(command "_.NETLOAD" "D:/github/tauri_cad/SunlightPlugin/bin/Release/SunlightPlugin.dll")
+(setvar "FILEDIA" 1)
+(princ "\n[SUN] Plugin loaded. Type SUN to open panel.")
+(princ)

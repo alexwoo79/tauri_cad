@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
+using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.Windows;
 
@@ -8,12 +11,37 @@ namespace SunlightPlugin
     {
         private static PaletteSet _paletteSet = null;
 
+        private static void LogLoadedAssemblyInfo()
+        {
+            try
+            {
+                var asm = Assembly.GetExecutingAssembly();
+                string path = asm.Location;
+                string version = asm.GetName().Version == null ? "unknown" : asm.GetName().Version.ToString();
+                string writeTime = File.Exists(path)
+                    ? File.GetLastWriteTime(path).ToString("yyyy-MM-dd HH:mm:ss")
+                    : "missing";
+
+                var doc = Application.DocumentManager.MdiActiveDocument;
+                if (doc != null)
+                {
+                    doc.Editor.WriteMessage($"\n[SUN] dll={path}");
+                    doc.Editor.WriteMessage($"\n[SUN] ver={version}, writeTime={writeTime}");
+                }
+            }
+            catch
+            {
+            }
+        }
+
         public void Initialize() { }
         public void Terminate() { }
 
         [CommandMethod("SUN")]
         public void ShowSunlightPalette()
         {
+            LogLoadedAssemblyInfo();
+
             if (_paletteSet == null)
             {
                 _paletteSet = new PaletteSet("GPU 日照强排引擎", new Guid("11223344-5566-7788-99AA-BBCCDDEEFF00"));

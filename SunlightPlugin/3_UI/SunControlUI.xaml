@@ -4,6 +4,13 @@
              Background="#F5F5F5" Width="280">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="10">
+            <Border Background="#1F2A44" CornerRadius="5" Padding="7,6" Margin="0,0,0,8">
+                <StackPanel>
+                    <TextBlock Name="txtAppTitle" Text="日照速算" Foreground="White" FontSize="13" FontWeight="Bold"/>
+                    <TextBlock Name="txtAppVersion" Text="版本 1.2.0" Foreground="#C7D2FE" FontSize="10" Margin="0,1,0,0"/>
+                </StackPanel>
+            </Border>
+
             <GroupBox Header="1. 日照标准设置" Margin="0,0,0,10" FontWeight="Bold" BorderBrush="#CCCCCC">
                 <StackPanel Margin="5">
                     <ComboBox Name="cmbDate" SelectedIndex="0" Margin="0,0,0,5">
@@ -15,8 +22,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox Name="cmbProvince" Margin="0,0,2,0" SelectionChanged="cmbProvince_SelectionChanged"/>
-                        <ComboBox Name="cmbCity" Grid.Column="1" Margin="2,0,0,0" SelectionChanged="cmbCity_SelectionChanged"/>
+                        <ComboBox Name="cmbProvince" Margin="0,0,2,0" SelectionChanged="cmbProvince_SelectionChanged" IsEditable="True" IsTextSearchEnabled="False" StaysOpenOnEdit="True" KeyUp="cmbProvince_KeyUp"/>
+                        <ComboBox Name="cmbCity" Grid.Column="1" Margin="2,0,0,0" SelectionChanged="cmbCity_SelectionChanged" IsEditable="True" IsTextSearchEnabled="False" StaysOpenOnEdit="True" KeyUp="cmbCity_KeyUp"/>
                     </Grid>
                     <Grid Margin="0,0,0,5">
                         <Grid.ColumnDefinitions>
@@ -34,12 +41,8 @@
                     </Grid>
                     <Grid Margin="0,0,0,5">
                         <TextBlock Text="计算步长(分钟):" VerticalAlignment="Center"/>
-                        <TextBox Name="txtTimeStep" Width="60" HorizontalAlignment="Right" Text="10"/>
+                        <TextBox Name="txtTimeStep" Width="60" HorizontalAlignment="Right" Text="5"/>
                     </Grid>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Right">
-                        <Button Name="btnLoadDWG" Content="读取图纸设置" Width="90" Margin="0,0,5,0" Click="btnLoadDWG_Click" Background="#E2E3E5" BorderThickness="0"/>
-                        <Button Name="btnSaveDWG" Content="保存设置到图纸" Width="90" Click="btnSaveDWG_Click" Background="#FFC107" BorderThickness="0"/>
-                    </StackPanel>
                 </StackPanel>
             </GroupBox>
 
@@ -74,6 +77,8 @@
                         </Grid>
                     </StackPanel>
                     <Button Name="btnPickOutline" Content="拾取轮廓生成模型" Height="30" Click="btnPickOutline_Click" Background="#007ACC" Foreground="White" BorderThickness="0"/>
+
+                    <Button Name="btnImportTz" Content="导入天正日照对象(MVP)" Height="30" Background="#FD7E14" Foreground="White" BorderThickness="0" Margin="0,6,0,0" Click="btnImportTz_Click"/>
                 </StackPanel>
             </GroupBox>
 
@@ -81,30 +86,53 @@
                 <StackPanel Margin="5">
                     <Button Name="btnClear" Content="🧹 清理图面日照结果" Height="25" Background="#E2E3E5" Foreground="#333333" BorderThickness="0" Margin="0,0,0,10" Click="btnClear_Click"/>
 
-                    <Button Name="btnSetBoundary" Content="① 设定计算边界 (先选后执行)" Height="30" Background="#6C757D" Foreground="White" BorderThickness="0" Margin="0,0,0,2" Click="btnSetBoundary_Click"/>
+                    <GroupBox Header="3.1 输入条件" Margin="0,0,0,8" BorderBrush="#D4D4D4">
+                        <StackPanel Margin="5">
+                            <Button Name="btnSetBoundary" Content="① 设定计算边界 (先选后执行)" Height="30" Background="#6C757D" Foreground="White" BorderThickness="0" Margin="0,0,0,2" Click="btnSetBoundary_Click"/>
 
-                    <Grid Margin="0,5,0,5" Background="#E9ECEF">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2">
-                            <TextBlock Text="面高(m):" FontSize="11" VerticalAlignment="Center"/>
-                            <TextBox Name="txtCalcHeight" Width="35" Margin="2,0,0,0" Text="0.9"/>
+                            <Grid Margin="0,5,0,5" Background="#E9ECEF">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2">
+                                    <TextBlock Text="面高(m):" FontSize="11" VerticalAlignment="Center"/>
+                                    <TextBox Name="txtCalcHeight" Width="35" Margin="2,0,0,0" Text="0.9"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2">
+                                    <TextBlock Text="间距(m):" FontSize="11" VerticalAlignment="Center"/>
+                                    <TextBox Name="txtGridSpacing" Width="35" Margin="2,0,0,0" Text="2.0"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Button Name="btnSelectStatic" Content="② 录入现状楼栋 (先选后执行)" Height="30" Background="#6C757D" Foreground="White" BorderThickness="0" Margin="0,0,0,2" Click="btnSelectStatic_Click"/>
+                            <TextBlock Name="txtStatus1" Text="等待设定..." Foreground="#888888" FontSize="11" Margin="0,0,0,2" HorizontalAlignment="Center"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2">
-                            <TextBlock Text="间距(m):" FontSize="11" VerticalAlignment="Center"/>
-                            <TextBox Name="txtGridSpacing" Width="35" Margin="2,0,0,0" Text="2.0"/>
+                    </GroupBox>
+
+                    <GroupBox Header="3.2 测算" BorderBrush="#D4D4D4">
+                        <StackPanel Margin="5">
+                            <TabControl Name="tabCalcMode" Margin="0,0,0,8" SelectionChanged="tabCalcMode_SelectionChanged">
+                                <TabItem Header="场地">
+                                    <StackPanel Margin="6,6,6,4">
+                                        <Button Name="btnStep2" Content="③ 平面网格测算" Height="30" Background="#17A2B8" Foreground="White" BorderThickness="0" Margin="0,0,0,4" Click="btnStep2_Click"/>
+                                        <CheckBox Name="chkRealtimeMode" Content="启用原生命令实时联动 (MOVE/ROTATE)" IsChecked="False" Margin="0,0,0,2" Foreground="#2F4F4F" Checked="chkRealtimeMode_Checked" Unchecked="chkRealtimeMode_Checked"/>
+                                    </StackPanel>
+                                </TabItem>
+                                <TabItem Header="立面">
+                                    <StackPanel Margin="6,6,6,4">
+                                        <TextBlock Text="立面网格测算（按间距，剔除北向±45°）" Foreground="#666666" FontSize="11" Margin="0,0,0,4" HorizontalAlignment="Center"/>
+                                        <CheckBox Name="chkFacadeRealtime" Content="立面测算随 MOVE/ROTATE 自动刷新" IsChecked="False" Margin="0,0,0,4" Foreground="#2F4F4F" Checked="chkFacadeRealtime_Checked" Unchecked="chkFacadeRealtime_Checked"/>
+                                        <Button Name="btnFacadeCalc" Content="③ 立面网格测算（多体块）" Height="30" Background="#0D6EFD" Foreground="White" BorderThickness="0" Margin="0,0,0,2" Click="btnFacadeCalc_Click"/>
+                                    </StackPanel>
+                                </TabItem>
+                            </TabControl>
+
+                            <TextBlock Name="txtStatus2" Text="未计算缓存" Foreground="#888888" FontSize="11" Margin="0,0,0,8" HorizontalAlignment="Center"/>
+
+                            <ToggleButton Name="btnStep3" Content="④ 启动共用推敲 (场地/立面)" Height="35" Background="#28A745" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="btnStep3_Click"/>
                         </StackPanel>
-                    </Grid>
-
-                    <Button Name="btnSelectStatic" Content="② 录入现状楼栋 (先选后执行)" Height="30" Background="#6C757D" Foreground="White" BorderThickness="0" Margin="0,0,0,2" Click="btnSelectStatic_Click"/>
-                    <TextBlock Name="txtStatus1" Text="等待设定..." Foreground="#888888" FontSize="11" Margin="0,0,0,10" HorizontalAlignment="Center"/>
-
-                    <Button Name="btnStep2" Content="③ GPU极速生成场地日照" Height="30" Background="#17A2B8" Foreground="White" BorderThickness="0" Margin="0,0,0,2" Click="btnStep2_Click"/>
-                    <TextBlock Name="txtStatus2" Text="未计算缓存" Foreground="#888888" FontSize="11" Margin="0,0,0,10" HorizontalAlignment="Center"/>
-
-                    <ToggleButton Name="btnStep3" Content="④ 选取拟建楼开启推敲" Height="35" Background="#28A745" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="btnStep3_Click"/>
+                    </GroupBox>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

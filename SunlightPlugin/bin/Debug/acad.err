@@ -1,8 +1,10 @@
 
 
-致命错误:  Unhandled Access Violation Reading 0x0008 Exception at EA7EA740h
+致命错误:  Unhandled e0434352h Exception at F01D1B6Ah
 
-06/03/2026 at 11:52:20.000  图形: 
+06/04/2026 at 16:39:49.000  图形: D:\Github\tauri_cad\RZ-20260602-CESU_TEST.dwg
 -------------
-工作（bim机）\2026-0512太原胜利街TODC地块\05 临时文件\TODC地块总图.dwg
+T.dwg
+-------------
+临时文件\TODC地块总图.dwg
 -------------

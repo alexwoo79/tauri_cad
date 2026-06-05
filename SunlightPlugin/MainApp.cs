@@ -40,6 +40,13 @@ namespace SunlightPlugin
         [CommandMethod("SUN")]
         public void ShowSunlightPalette()
         {
+            var licenseStatus = LicenseManager.GetCurrentStatus();
+            if (!licenseStatus.IsValid)
+            {
+                WriteLicenseStatus(licenseStatus, showDialog: true);
+                return;
+            }
+
             LogLoadedAssemblyInfo();
 
             if (_paletteSet == null)
@@ -55,6 +62,58 @@ namespace SunlightPlugin
                 _paletteSet.MinimumSize = new System.Drawing.Size(280, 600);
             }
             _paletteSet.Visible = true;
+        }
+
+        [CommandMethod("SUNLICINFO")]
+        public void ShowLicenseInfo()
+        {
+            WriteLicenseStatus(LicenseManager.GetCurrentStatus(), showDialog: false);
+        }
+
+        [CommandMethod("SUNLICSTATUS")]
+        public void ShowLicenseStatus()
+        {
+            WriteLicenseStatus(LicenseManager.GetCurrentStatus(), showDialog: false);
+        }
+
+        [CommandMethod("SUNLICACT")]
+        public void ActivateLicense()
+        {
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            if (doc == null) return;
+
+            var options = new Autodesk.AutoCAD.EditorInput.PromptStringOptions("\n请输入授权码: ")
+            {
+                AllowSpaces = true
+            };
+            var result = doc.Editor.GetString(options);
+            if (result.Status != Autodesk.AutoCAD.EditorInput.PromptStatus.OK) return;
+
+            var status = LicenseManager.Activate(result.StringResult);
+            WriteLicenseStatus(status, showDialog: !status.IsValid);
+        }
+
+        [CommandMethod("SUNLICCLEAR")]
+        public void ClearLicense()
+        {
+            LicenseManager.ClearLicense();
+            WriteLicenseStatus(LicenseManager.GetCurrentStatus(), showDialog: false);
+        }
+
+        private static void WriteLicenseStatus(LicenseStatus status, bool showDialog)
+        {
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            string summary = LicenseManager.BuildStatusSummary(status);
+
+            if (doc != null)
+            {
+                doc.Editor.WriteMessage("\n" + summary.Replace("\r\n", "\n"));
+            }
+
+            if (showDialog)
+            {
+                Application.ShowAlertDialog(summary + "\n\n操作命令:\n1. SUNLICINFO 查看机器码\n2. SUNLICACT 输入授权码\n3. SUNLICSTATUS 查看授权状态");
+            }
         }
     }
 }

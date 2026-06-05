@@ -40,14 +40,5 @@ D:\Github\tauri_cad\SunlightPlugin\obj\Debug\3_UI\SunControlUI.g.cs
 D:\Github\tauri_cad\SunlightPlugin\obj\Debug\SunlightPlugin_MarkupCompile.cache
 D:\Github\tauri_cad\SunlightPlugin\obj\Debug\SunlightPlugin.g.resources
 D:\Github\tauri_cad\SunlightPlugin\obj\Debug\SunlightPlugin.csproj.CopyComplete
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\Costura.dll
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\ILGPU.dll
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\System.Buffers.dll
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\System.Collections.Immutable.dll
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\System.Memory.dll
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\System.Numerics.Vectors.dll
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\System.Reflection.Metadata.dll
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\Costura.pdb
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\Costura.xml
-D:\github\tauri_cad\SunlightPlugin\bin\Debug\ILGPU.pdb
+D:\Github\tauri_cad\SunlightPlugin\obj\Debug\SunlightPlugin.csproj.Fody.CopyLocal.cache
+D:\Github\tauri_cad\SunlightPlugin\obj\Debug\SunlightPlugin.csproj.Fody.RuntimeCopyLocal.cache
